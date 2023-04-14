@@ -1,7 +1,7 @@
 {
-  "name": "@liuk123456/utils",
+  "name": "@liuk123456789/k_util",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "This is a test",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
