@@ -1,6 +1,6 @@
 # liuk123456789
 
-This is a test, delete this package will soon, please use it, Thanks!!!
+This is a test, delete this package will soon, please don't use it, Thanks!!!
 
 ## Useage
 
