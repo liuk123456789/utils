@@ -1,5 +1,5 @@
 {
-  "name": "kona-utils",
+  "name": "@konalau/utils",
   "type": "module",
   "version": "1.0.0",
   "packageManager": "pnpm@9.15.3",
