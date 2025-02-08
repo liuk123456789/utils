@@ -1,7 +1,7 @@
 {
   "name": "@konalau/utils",
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "packageManager": "pnpm@9.15.3",
   "description": "Apply for Project",
   "author": "Kona <liuer5194@gmail.com>",
@@ -33,7 +33,7 @@
     "lint": "eslint .",
     "lint-fix": "nr lint --fix",
     "prepublishOnly": "npm run build",
-    "release": "bumpp --commit --push --tag && npm publish",
+    "release": "bumpp --commit --push --tag && npm publish --access public",
     "start": "esno src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest"
