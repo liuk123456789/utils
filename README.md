@@ -1,2 +1,5 @@
-### utils
-Utils For Develop
+### Install
+
+```bash
+npm install @konalau/utils
+```
