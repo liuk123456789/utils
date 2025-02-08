@@ -145,3 +145,37 @@ export function unindent(str: TemplateStringsArray | string) {
     .map(line => line.slice(commonIndent))
     .join('\n')
 }
+
+/**
+ * 将字符串的首字母转换为小写。
+ *
+ * @param str 要转换的字符串
+ * @return string 首字母小写的字符串
+ */
+export function toLowerCaseFirstLetter(str: string): string {
+  if (!str)
+    return str // 如果字符串为空，直接返回
+  return str.charAt(0).toLowerCase() + str.slice(1)
+}
+
+/**
+ *  生成驼峰命名法的键名
+ * @param key
+ * @param parentKey
+ */
+export function toCamelCase(key: string, parentKey: string): string {
+  if (!parentKey) {
+    return key
+  }
+  return parentKey + key.charAt(0).toUpperCase() + key.slice(1)
+}
+
+export function kebabToCamelCase(str: string): string {
+  return str
+    .split('-')
+    .filter(Boolean)
+    .map((word, index) =>
+      index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1),
+    )
+    .join('')
+}
