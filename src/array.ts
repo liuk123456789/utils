@@ -151,3 +151,98 @@ export function treeToArray<T extends TreeNode>(
 
   return result
 }
+
+/**
+ * 去重
+ * @params array 原数组
+ * @returns 去重后的数组
+ */
+export function uniq<T>(array: readonly T[]): T[] {
+  return Array.from(new Set(array))
+}
+
+/**
+ * 去重 通过比对函数
+ * @params array 原数组
+ * @returns 比对函数
+ */
+export function uniqueBy<T>(array: readonly T[], equalFn: (a: any, b: any) => boolean): T[] {
+  return array.reduce((acc: T[], cur: any) => {
+    const index = acc.findIndex((item: any) => equalFn(cur, item))
+    if (index === -1)
+      acc.push(cur)
+    return acc
+  }, [])
+}
+
+/**
+ * 获取数组最后一个元素
+ * @params array
+ * @return 返回最后一个元素
+ */
+export function last(array: readonly []): undefined
+export function last<T>(array: readonly T[]): T
+export function last<T>(array: readonly T[]): T | undefined {
+  return at(array, -1)
+}
+
+/**
+ * 获取数组某个下标元素 支持负数
+ * @params array
+ * @return 返回的下标元素
+ */
+export function at(array: readonly [], index: number): undefined
+export function at<T>(array: readonly T[], index: number): T
+export function at<T>(array: readonly T[] | [], index: number): T | undefined {
+  const len = array.length
+  if (!len)
+    return undefined
+
+  if (index < 0)
+    index += len
+
+  return array[index]
+}
+
+/**
+ * 生成一个随机数组
+ * @params stop
+ * @params start
+ * @params step
+ * @returns 返回的随机数数组
+ */
+export function range(stop: number): number[]
+export function range(start: number, stop: number, step?: number): number[]
+export function range(...args: any): number[] {
+  let start: number, stop: number, step: number
+
+  if (args.length === 1) {
+    start = 0
+    step = 1;
+    ([stop] = args)
+  }
+  else {
+    ([start, stop, step = 1] = args)
+  }
+
+  const arr: number[] = []
+  let current = start
+  while (current < stop) {
+    arr.push(current)
+    current += step || 1
+  }
+
+  return arr
+}
+
+/**
+ * 移动数组中的元素
+ * @params arr
+ * @params from
+ * @params to
+ * @returns 返回的随机数数组
+ */
+export function move<T>(arr: T[], from: number, to: number) {
+  arr.splice(to, 0, arr.splice(from, 1)[0])
+  return arr
+}
