@@ -1,3 +1,35 @@
+import type { Arrayable, Nullable } from './types'
+
+export function toArray<T>(array?: Nullable<Arrayable<T>>): Array<T> {
+  array = array ?? []
+  return Array.isArray(array) ? array : [array]
+}
+
+export function at(array: readonly [], index: number): undefined
+export function at<T>(array: readonly T[], index: number): T
+export function at<T>(array: readonly T[] | [], index: number): T | undefined {
+  const len = array.length
+  if (!len)
+    return undefined
+
+  if (index < 0)
+    index += len
+
+  return array[index]
+}
+
+export function first(array: readonly []): undefined
+export function first<T>(array: readonly T[]): T
+export function first<T>(array: readonly T[]): T | undefined {
+  return at(array, 0)
+}
+
+export function last(array: readonly []): undefined
+export function last<T>(array: readonly T[]): T
+export function last<T>(array: readonly T[]): T | undefined {
+  return at(array, -1)
+}
+
 /**
  * 扁平化数组
  * @param arr { Array}
@@ -173,35 +205,6 @@ export function uniqueBy<T>(array: readonly T[], equalFn: (a: any, b: any) => bo
       acc.push(cur)
     return acc
   }, [])
-}
-
-/**
- * 获取数组最后一个元素
- * @params array
- * @return 返回最后一个元素
- */
-export function last(array: readonly []): undefined
-export function last<T>(array: readonly T[]): T
-export function last<T>(array: readonly T[]): T | undefined {
-  return at(array, -1)
-}
-
-/**
- * 获取数组某个下标元素 支持负数
- * @params array
- * @return 返回的下标元素
- */
-export function at(array: readonly [], index: number): undefined
-export function at<T>(array: readonly T[], index: number): T
-export function at<T>(array: readonly T[] | [], index: number): T | undefined {
-  const len = array.length
-  if (!len)
-    return undefined
-
-  if (index < 0)
-    index += len
-
-  return array[index]
 }
 
 /**
