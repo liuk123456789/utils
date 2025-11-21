@@ -1,3 +1,37 @@
+import type { Arrayable, Nullable } from './types'
+
+export function toArray<T>(array?: Nullable<Arrayable<T>>): Array<T> {
+  array = array ?? []
+  return Array.isArray(array) ? array : [array]
+}
+
+export function at(array: readonly [], index: number): undefined
+export function at<T>(array: readonly T[], index: number): T
+export function at<T>(array: readonly T[] | [], index: number): T | undefined {
+  const len = array.length
+  if (!len)
+    return undefined
+
+  if (index < 0)
+    index += len
+
+  return array[index]
+}
+
+export function first(array: readonly []): undefined
+export function first<T>(array: readonly T[]): T
+export function first<T>(array: readonly T[]): T | undefined {
+  return at(array, 0)
+}
+
+
+export function last(array: readonly []): undefined
+export function last<T>(array: readonly T[]): T
+export function last<T>(array: readonly T[]): T | undefined {
+  return at(array, -1)
+}
+
+
 /**
  * 扁平化数组
  * @param arr { Array}
@@ -151,3 +185,5 @@ export function treeToArray<T extends TreeNode>(
 
   return result
 }
+
+
