@@ -1,7 +1,6 @@
-import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import {  isNumber, isUndefined } from './is'
+import { isNumber, isUndefined } from './is'
 
 import 'dayjs/locale/zh-cn'
 
@@ -70,7 +69,7 @@ export function toRelativeTime(time: TimeLike): string {
 }
 
 // 开始时间
-export function getStartOfTime(time: TimeLike, unit: dayjs.OpUnitType): Dayjs {
+export function getStartOfTime(time: TimeLike, unit: dayjs.OpUnitType) {
   const isValid = isDateValid(time)
   if (!isValid) {
     throw new Error('Invalid Date')
@@ -79,7 +78,7 @@ export function getStartOfTime(time: TimeLike, unit: dayjs.OpUnitType): Dayjs {
 }
 
 // 结束时间
-export function getEndOfTime(time: TimeLike, unit: dayjs.OpUnitType): Dayjs {
+export function getEndOfTime(time: TimeLike, unit: dayjs.OpUnitType) {
   const isValid = isDateValid(time)
   if (!isValid) {
     throw new Error('Invalid Date')
